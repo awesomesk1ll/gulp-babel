@@ -10,6 +10,14 @@ function replaceExtension(fp) {
 	return path.extname(fp) ? replaceExt(fp, '.js') : fp;
 }
 
+/**
+ * Модифицированная версия gulp-babel. Добавлена возможность отключать применение SourceMaps
+ * с помощью vinyl-sourcemaps-apply и вместо этого просто проставлять мапы сгенерированные babel.
+ * (Добавлен второй параметр applySourceMaps, который по умолчанию true.)
+ * Изменения предложены в оригинальный репозиторий:
+ * https://github.com/babel/gulp-babel/pull/223
+ * Изменения относительно оригинала в строках: 21, 55-59
+ */
 module.exports = function (opts, applySourceMaps = true) {
 	opts = opts || {};
 
